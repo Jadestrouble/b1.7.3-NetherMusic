@@ -40,7 +40,7 @@ repositories {
 	// Used for a StationAPI dependency.
 	maven {
 		name = 'Froge'
-		url 'https://maven.neoforged.net/'
+		url = 'https://maven.minecraftforge.net/'
 	}
 	// Used for projects that do not have a maven repository, but do have a GitHub repository with working build scripts.
 	maven {
@@ -83,6 +83,10 @@ dependencies {
 	modImplementation("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.howmanyitems_version}") {
 		transitive false
 	}
+	modImplementation('com.github.matthewperiut:spc-babric:0.4.1') {
+		transitive false
+	}
+	modImplementation "com.github.paulevsGitch:BHCreative:0.3.1"
 }
 
 processResources {
