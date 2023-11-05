@@ -1,5 +1,5 @@
 # Nether Music for Beta 1.7.3
-A mod for Minecraft Beta 1.7.3 that adds Minecrat Volume Alpha Nether Music to play in the nether
+A mod for Minecraft Beta 1.7.3 that adds Minecraft Volume Alpha Nether Music to play in the nether
 
 ## Requirements
 Babric https://babric.github.io/
