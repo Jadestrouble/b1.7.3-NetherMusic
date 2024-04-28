@@ -8,7 +8,7 @@
   "server": [
   ],
   "client": [
-    "SoundHelperMixin"
+    "SoundManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

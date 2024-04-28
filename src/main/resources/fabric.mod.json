@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Nether Music",
-  "description": "A mod for Minecraft Beta 1.7.3 that adds Minecraft Volume Alpha Nether Music to play in the nether",
+  "description": "A mod for Minecraft Beta 1.7.3 that adds Minecraft Volume Beta Nether Music to play in the nether",
   "authors": [
     "Jadestrouble"
   ],
@@ -21,6 +21,7 @@
     "stationapi:event_bus":[
     ],
     "stationapi:event_bus_client": [
+      "jadestrouble.nethermusic.sounds.NetherMusicSoundManager"
     ],
     "stationapi:event_bus_server": [
     ]
