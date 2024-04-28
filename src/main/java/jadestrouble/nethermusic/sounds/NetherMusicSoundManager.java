@@ -87,6 +87,7 @@ public class NetherMusicSoundManager {
     }
 
     public static Sound getRandomMusic(Random random) {
+        NetherMusicSoundManager.LOGGER.info("Random music was grabbed!");
         if (MUSIC.length == 1) return MUSIC[MUSIC_INDEX_DATA[0]];
         if (musicIndex == MUSIC.length) {
             byte value = MUSIC_INDEX_DATA[musicIndex - 1];
@@ -99,6 +100,7 @@ public class NetherMusicSoundManager {
         return MUSIC[MUSIC_INDEX_DATA[musicIndex++]];
     }
     private static void shuffleMusic(Random random) {
+        NetherMusicSoundManager.LOGGER.info("Shuffled Music!");
         for (byte i = 0; i < MUSIC.length; i++) {
             byte i2 = (byte) random.nextInt(MUSIC.length);
             byte value = MUSIC_INDEX_DATA[i];
