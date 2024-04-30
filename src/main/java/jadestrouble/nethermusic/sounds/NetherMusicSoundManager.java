@@ -10,13 +10,15 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import net.minecraft.client.sound.SoundManager;
+
 import paulscode.sound.SoundSystem;
 
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-@Environment(EnvType.CLIENT)
+
 public class NetherMusicSoundManager {
     public static final String STREAMING_KEY = "streaming";
     public static final String MUSIC_KEY = "BgMusic";
@@ -39,8 +41,9 @@ public class NetherMusicSoundManager {
 
     public static void setInTheNether(boolean inTheNether) {
         if (NetherMusicSoundManager.inTheNether != inTheNether) {
-            NetherMusicSoundManager.LOGGER.info("Switched Dimension!");
+            NetherMusicSoundManager.LOGGER.debug("Switched Dimension!");
             soundSystem.stop(MUSIC_KEY);
+
         }
         NetherMusicSoundManager.inTheNether = inTheNether;
     }
@@ -59,7 +62,7 @@ public class NetherMusicSoundManager {
         NetherMusicSoundManager.LOGGER.info("Tried to get sounds!");
         if (id == null) return null;
         return SOUNDS.computeIfAbsent(id, key -> {
-            String path = "assets/" + key.namespace + "/stationapi/music/" + key.path + ".ogg";
+            String path = "assets/" + key.namespace + "/stationapi/music/" + key.path;
             URL url = NetherMusicSoundManager.getURL(path);
             if (url == null) {
                 NetherMusicSoundManager.LOGGER.warn("Sound " + path + " is missing!");
@@ -70,10 +73,10 @@ public class NetherMusicSoundManager {
     }
 
     private static final Sound[] MUSIC = new Sound[] {
-            getSound(NetherMusicSoundManager.id("nether1")),
-            getSound(NetherMusicSoundManager.id("nether2")),
-            getSound(NetherMusicSoundManager.id("nether3")),
-            getSound(NetherMusicSoundManager.id("nether4")),
+            getSound(NetherMusicSoundManager.id("ballad_of_the_cats.ogg")),
+            getSound(NetherMusicSoundManager.id("concrete_halls.ogg")),
+            getSound(NetherMusicSoundManager.id("dead_voxel.ogg")),
+            getSound(NetherMusicSoundManager.id("warmth.ogg"))
     };
 
     private static final byte[] MUSIC_INDEX_DATA = new byte[MUSIC.length];
@@ -87,7 +90,6 @@ public class NetherMusicSoundManager {
     }
 
     public static Sound getRandomMusic(Random random) {
-        NetherMusicSoundManager.LOGGER.info("Random music was grabbed!");
         if (MUSIC.length == 1) return MUSIC[MUSIC_INDEX_DATA[0]];
         if (musicIndex == MUSIC.length) {
             byte value = MUSIC_INDEX_DATA[musicIndex - 1];
@@ -100,7 +102,6 @@ public class NetherMusicSoundManager {
         return MUSIC[MUSIC_INDEX_DATA[musicIndex++]];
     }
     private static void shuffleMusic(Random random) {
-        NetherMusicSoundManager.LOGGER.info("Shuffled Music!");
         for (byte i = 0; i < MUSIC.length; i++) {
             byte i2 = (byte) random.nextInt(MUSIC.length);
             byte value = MUSIC_INDEX_DATA[i];
