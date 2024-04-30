@@ -19,9 +19,10 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus":[
-      "jadestrouble.nethermusic.sounds.NetherMusicSoundManager"
     ],
     "stationapi:event_bus_client": [
+      "jadestrouble.nethermusic.sounds.NetherMusicSoundManager",
+      "jadestrouble.nethermusic.sounds.NetherMusicClientSounds"
     ],
     "stationapi:event_bus_server": [
     ]
